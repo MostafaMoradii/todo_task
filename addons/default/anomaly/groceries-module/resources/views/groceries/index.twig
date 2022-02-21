@@ -1,0 +1,71 @@
+{% extends "theme::layouts/default" %}
+{% block content %}
+<style>
+    .search {
+        display: inline-block;
+        width: 200px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-8">
+        <form enctype="multipart/form-data" action="/groceries" method="get">
+            <input class="input-sm form-control search" placeholder="Search" name="search">
+            {% if (is_admin) %}
+            <select class="input-sm form-control search" name="user_id">
+                <option selected disabled>Select an user</option>
+                {% for user in users %}
+                <option value="{{ user.value }}">{{ user.label }}</option>
+                {% endfor %}
+            </select>
+            {% endif %}
+            <button type="submit" class="btn btn-info btn-sm">FILTER</button>
+        </form>
+    </div>
+    <div class="col-md-4 text-right">
+        <a href="/groceries/create">
+            <button type="button" class="btn btn-sm btn-success">Create a Grocery</button>
+        </a>
+    </div>
+</div>
+{% if (session('status')) %}
+    <div class="alert alert-success">
+        <strong>{{ session('status') }}</strong>
+    </div>
+{% endif %}
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Description</th>
+        <th></th>
+    </tr>
+    {% for grocery in groceries %}
+        <tr>
+            <td>{{ grocery.name }}</td>
+            <td>{{ grocery.slug }}</td>
+            <td>{{ grocery.description }}</td>
+            <td><a href="/groceries/show/{{ grocery.id }}">SHOW</a> | <a style="color:blue"
+                                                                         href="/groceries/edit/{{ grocery.id }}">EDIT</a>|<a
+                        style="color:red" href="/groceries/delete/{{ grocery.id }}"> DELETE</a></td>
+        </tr>
+    {% endfor %}
+</table>
+{{ groceries.links|raw }}
+{% endblock %}

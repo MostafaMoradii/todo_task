@@ -1,7 +1,7 @@
 <?php
 
 return [
-    
+
     /*
     |--------------------------------------------------------------------------
     | Listeners
@@ -118,18 +118,18 @@ return [
     */
 
     'middleware_priority' => [],
-    
+
     /*
     |--------------------------------------------------------------------------
     | View Overrides
     |--------------------------------------------------------------------------
     |
-    | Define globally overridden views as 'view' => 'override' view paths.
+    | Define globally overridden views as 'views' => 'override' views paths.
     |
     */
 
     'overrides' => [],
-    
+
     /*
     |--------------------------------------------------------------------------
     | Control Panel Customization

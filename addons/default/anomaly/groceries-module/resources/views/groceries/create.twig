@@ -1,0 +1,11 @@
+{% extends "theme::layouts/default" %}
+
+{% block content %}
+    {% set form = form('groceries', 'groceries').redirect('groceries').get() %}
+    {{ form.open|raw }}
+    {{ form.fields.name|raw }}
+    {{ form.fields.slug|raw }}
+    {{ form.fields.description|raw }}
+    {{ form.renderActions()|raw }}
+    {{ form.close|raw }}
+{% endblock %}
