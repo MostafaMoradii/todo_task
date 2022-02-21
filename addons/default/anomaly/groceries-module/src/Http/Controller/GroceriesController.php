@@ -63,12 +63,6 @@ class GroceriesController extends PublicController
         return $this->view->make('anomaly.module.groceries::groceries.show', ['grocery' => $grocery]);
     }
 
-    /**
-     * Create a new entry.
-     *
-     * @param GroceryFormBuilder $form
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function create()
     {
         $this->breadcrumbs->add('Home', '/');
@@ -78,13 +72,6 @@ class GroceriesController extends PublicController
         return $this->view->make('anomaly.module.groceries::groceries.create');
     }
 
-    /**
-     * Edit an existing entry.
-     *
-     * @param GroceryFormBuilder $form
-     * @param        $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function edit($id)
     {
         $grocery = $this->groceryRepository->read($id);

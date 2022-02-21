@@ -1,7 +1,7 @@
 {% extends "theme::layouts/default" %}
 
 {% block content %}
-    {% set form = form('groceries', 'groceries', grocery).redirect('groceries').get() %}
+    {% set form = form('groceries', 'groceries', grocery).action('PUT').redirect('groceries').get() %}
     {{ form.open()|raw }}
     {{ form.fields.name|raw }}
     {{ form.fields.slug|raw }}
